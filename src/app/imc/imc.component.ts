@@ -14,6 +14,7 @@ export class ImcComponent {
   altura: number = 0;
   imc: number = 0;
   estado: string = '';
+  recomendacion: string = '';
   edad: number = 0;
   genero: string = 'Hombre';
 
@@ -42,6 +43,11 @@ export class ImcComponent {
       this.estado = 'Sobrepeso';
     } else {
       this.estado = 'Obesidad';
+    }
+
+    if (this.edad > 65) {
+      this.recomendacion +=
+        ' Para adultos mayores, es importante discutir estos rangos con un médico.';
     }
   }
 
