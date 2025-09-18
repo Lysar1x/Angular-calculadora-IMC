@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HistoryService, HistorialEntry } from '../services/history.service';
+import { HistoryChartComponent } from '../components/history-chart/history-chart.component';
 
 @Component({
   selector: 'app-imc',
