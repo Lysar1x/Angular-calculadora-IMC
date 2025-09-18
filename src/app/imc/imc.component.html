@@ -2,12 +2,17 @@
 
 <div class="input-group">
   <label>Peso (kg)</label>
-  <input type="number" />
+  <input type="number" [(ngModel)]="peso" />
 </div>
 
 <div class="input-group">
   <label>Altura (m)</label>
-  <input type="number" />
+  <input type="number" [(ngModel)]="altura" />
 </div>
 
-<p></p>
+<p *ngIf="imc > 0">
+  Tu IMC es: <strong>{{ imc | number : "1.2-2" }}</strong>
+</p>
+<p *ngIf="imc > 0">
+  Tu estado es: <strong>{{ estado }}</strong>
+</p>
