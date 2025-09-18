@@ -14,6 +14,8 @@ export class ImcComponent {
   altura: number = 0;
   imc: number = 0;
   estado: string = '';
+  edad: number = 0;
+  genero: string = 'Hombre';
 
   calcularIMC() {
     // Validamos que el peso y la altura sean mayores a cero
@@ -41,5 +43,13 @@ export class ImcComponent {
     } else {
       this.estado = 'Obesidad';
     }
+  }
+
+  getIndicatorWidth(): string {
+    const minImc = 15;
+    const maxImc = 40;
+    const percent = ((this.imc - minImc) / (maxImc - minImc)) * 100;
+    const finalPercent = Math.max(0, Math.min(100, percent));
+    return `${finalPercent}%`;
   }
 }

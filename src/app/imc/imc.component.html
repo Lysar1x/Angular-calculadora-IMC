@@ -2,17 +2,43 @@
 
 <div class="input-group">
   <label>Peso (kg):</label>
-  <input type="number" [(ngModel)]="peso" (input)="calcularIMC()" />
+  <input type="number" placeholder="peso" [(ngModel)]="peso" />
 </div>
 
 <div class="input-group">
   <label>Altura (m):</label>
-  <input type="number" [(ngModel)]="altura" (input)="calcularIMC()" />
+  <input type="number" placeholder="altura" [(ngModel)]="altura" />
 </div>
 
-<p *ngIf="imc > 0">
-  Tu IMC es: <strong>{{ imc | number : "1.2-2" }}</strong>
-</p>
-<p *ngIf="imc > 0">
-  Tu estado es: <strong>{{ estado }}</strong>
-</p>
+<div class="input-group">
+  <label for="edad">Edad:</label>
+  <input
+    id="edad"
+    type="number"
+    placeholder="Ingresa tu edad"
+    [(ngModel)]="edad"
+  />
+</div>
+
+<div class="input-group">
+  <label for="genero">Género:</label>
+  <select id="genero" [(ngModel)]="genero">
+    <option value="masculino">Masculino</option>
+    <option value="femenino">Femenino</option>
+  </select>
+  <button (click)="calcularIMC()">Calcular</button>
+
+  <div *ngIf="imc > 0" class="results-container">
+    <h3>Tu resultado:</h3>
+    <p class="imc-value">{{ imc | number : "1.1-2" }}</p>
+    <p class="imc-status">{{ estado }}</p>
+
+    <div class="imc-bar-track">
+      <div
+        class="imc-indicator"
+        [ngClass]="estado.toLowerCase().replace(' ', '-')"
+        [style.width]="getIndicatorWidth()"
+      ></div>
+    </div>
+  </div>
+</div>
