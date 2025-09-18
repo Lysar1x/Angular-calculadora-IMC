@@ -16,7 +16,13 @@ export class ImcComponent {
   estado: string = '';
 
   calcularIMC() {
-    if (this.peso > 0 && this.altura > 0) {
+    // 1. Validamos que el peso y la altura sean números válidos
+    if (
+      this.peso > 0 &&
+      this.altura > 0 &&
+      typeof this.peso === 'number' &&
+      typeof this.altura === 'number'
+    ) {
       this.imc = this.peso / (this.altura * this.altura);
       this.determinarEstado();
     } else {
