@@ -1,0 +1,53 @@
+<div class="imc-container">
+  <h2>Calculadora de IMC</h2>
+
+  <div class="input-group">
+    <label for="peso">Peso (kg):</label>
+    <input id="peso" type="number" placeholder="Ej: 70" [(ngModel)]="peso" />
+  </div>
+
+  <div class="input-group">
+    <label for="altura">Altura (cm):</label>
+    <input
+      id="altura"
+      type="number"
+      placeholder="Ej: 175"
+      [(ngModel)]="altura"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="edad">Edad:</label>
+    <input id="edad" type="number" placeholder="Ej: 25" [(ngModel)]="edad" />
+  </div>
+
+  <div class="input-group">
+    <label for="genero">Sexo:</label>
+    <select id="genero" [(ngModel)]="genero">
+      <option value="hombre">Hombre</option>
+      <option value="mujer">Mujer</option>
+    </select>
+  </div>
+
+  <button (click)="calcularIMC()">Calcular</button>
+
+  <div *ngIf="imc > 0" class="results-container">
+    <h3>Tu resultado:</h3>
+    <p class="imc-value">{{ imc | number : "1.1-2" }}</p>
+    <p class="imc-status">{{ estado }}</p>
+
+    <div class="imc-bar-track">
+      <div
+        class="imc-indicator"
+        [ngClass]="estado.toLowerCase().replace(' ', '-')"
+        [style.width]="getIndicatorWidth()"
+      ></div>
+    </div>
+
+    <p class="imc-recomendacion">{{ recomendacion }}</p>
+  </div>
+  <div *ngIf="historial.length > 0" class="history-container">
+    <h3>Historial de Mediciones</h3>
+    <!--<app-history-chart [historial]="historial"></app-history-chart>-->
+  </div>
+</div>
