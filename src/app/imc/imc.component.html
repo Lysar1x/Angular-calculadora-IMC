@@ -46,4 +46,16 @@
 
     <p class="imc-recomendacion">{{ recomendacion }}</p>
   </div>
+  <div *ngIf="historial.length > 0" class="history-container">
+    <h3>Historial de Mediciones</h3>
+    <ul>
+      <li *ngFor="let registro of historial">
+        <span>{{ registro.fecha }}</span>
+        <span
+          >IMC: <strong>{{ registro.imc | number : "1.1-2" }}</strong></span
+        >
+        <span>({{ registro.estado }})</span>
+      </li>
+    </ul>
+  </div>
 </div>
