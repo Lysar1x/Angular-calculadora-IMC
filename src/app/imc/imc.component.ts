@@ -8,7 +8,7 @@ import { HistoryService, HistorialEntry } from '../services/history.service';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './imc.component.html',
-  styleUrl: './imc.component.css',
+  styleUrl: './imc.component.scss',
 })
 export class ImcComponent implements OnInit {
   peso: number = 0;
